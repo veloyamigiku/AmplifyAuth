@@ -1,14 +1,20 @@
 import { Auth } from 'aws-amplify';
 
-import configure from './configure.js';
+export default function(
+  username,
+  code) {
+  
+  let res = false;
+  try {
+    Auth.confirmSignUp(
+      username,
+      code
+    );
+    res = true;
+  } catch (error) {
+    console.log(error);
+  }
 
-configure();
+  return res;
 
-try {
-  Auth.confirmSignUp(
-    'velo.yamigiku2@gmail.com',
-    '889615' // code
-  );
-} catch (error) {
-  console.log(error);
 }

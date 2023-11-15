@@ -5,6 +5,7 @@
   "type": "module",
   "license": "MIT",
   "dependencies": {
-    "aws-amplify": "^5.3.12"
+    "aws-amplify": "^5.3.12",
+    "dotenv": "^16.3.1"
   }
 }

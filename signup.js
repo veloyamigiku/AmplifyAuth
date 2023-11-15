@@ -1,15 +1,20 @@
 import { Auth } from 'aws-amplify';
 
-import configure from './configure.js';
+export default async function(
+  username,
+  password) {
+  
+  let new_user = null;
+  try {
+    const { user } = await Auth.signUp({
+      username: username,
+      password: password
+    });
+    new_user = user;
+  } catch (error) {
+    console.log(error);
+  }
 
-configure();
+  return new_user;
 
-try {
-  const { user } = await Auth.signUp({
-    username: 'velo.yamigiku2@gmail.com',
-    password: 'Wkd44967?z'
-  });
-  console.log(user);
-} catch (error) {
-  console.log(error);
-}
+};
