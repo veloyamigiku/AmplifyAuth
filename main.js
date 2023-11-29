@@ -6,6 +6,7 @@ import confirm from './confirm.js';
 import signin from './signin.js';
 import signup from './signup.js';
 import user_session from './user_session.js';
+import signout from './signout.js';
 
 
 configure();
@@ -74,11 +75,13 @@ IDトークン期限: ${session.idToken.payload.exp}
             case 2:
                 await execSignin();
                 break;
+            case 3:
+                await execSignOut();
+                break;
             case 0:
                 console.log('end');
                 return;
             default:
-                action1();
                 break;
         }
     }
@@ -115,4 +118,8 @@ async function execSignin() {
     if (user) {
         console.log('サインイン成功');
     }
+}
+
+async function execSignOut() {
+    await signout();
 }
